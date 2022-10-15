@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import { blogdata } from "./blogdata";
 
 function BlogPage() {
   return (
     <>
-      <h1>BlobPage</h1>
+      <h1>Blob</h1>
+
+      <Outlet />
+
       <ul>
         {blogdata.map((post, index) => (
           <BlogLink key={index} post={post} />
