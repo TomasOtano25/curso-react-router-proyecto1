@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AuthContext = React.createContext();
 
@@ -25,6 +25,16 @@ function AuthProvider({ children }) {
 function useAuth() {
   const auth = useContext(AuthContext);
   return auth;
+}
+
+export function ProtectedPage({ children }) {
+  const auth = useAuth();
+
+  if (!auth.user) {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
 }
 
 export { AuthProvider, useAuth };

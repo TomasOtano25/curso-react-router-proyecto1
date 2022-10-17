@@ -9,7 +9,7 @@ import { ProfilePage } from "./components/ProfilePage";
 import { LoginPage } from "./pages/LoginPage";
 import { LogoutPage } from "./pages/LogoutPage";
 
-import { AuthProvider } from "./components/auth/auth";
+import { AuthProvider, ProtectedPage } from "./components/auth/auth";
 
 // /#/ -> Home
 // /#/blog
@@ -32,8 +32,22 @@ function App() {
             </Route>
 
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/logout" element={<LogoutPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/logout"
+              element={
+                <ProtectedPage>
+                  <LogoutPage />
+                </ProtectedPage>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedPage>
+                  <ProfilePage />
+                </ProtectedPage>
+              }
+            />
 
             <Route path="*" element={<p>Not found</p>} />
           </Routes>
