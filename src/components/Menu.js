@@ -44,6 +44,11 @@ routes.push({
   private: false,
 });
 routes.push({
+  to: "/blog/create",
+  text: "Create Post",
+  private: true,
+});
+routes.push({
   to: "/profile",
   text: "Profile",
   private: true,

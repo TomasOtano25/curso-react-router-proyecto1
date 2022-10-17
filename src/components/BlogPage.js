@@ -1,17 +1,18 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
-import { blogdata } from "./blogdata";
+import { usePosts } from "./posts";
 
 function BlogPage() {
+  const { posts } = usePosts();
+
   return (
     <>
       <h1>Blob</h1>
-
       <Outlet />
 
       <ul>
-        {blogdata.map((post, index) => (
+        {posts.map((post, index) => (
           <BlogLink key={index} post={post} />
         ))}
       </ul>
